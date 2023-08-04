@@ -23,6 +23,15 @@ public class Program
             false, 
             null,
             null);
+        
+        // For some reason it still launches fine without an access token.
+        // Minecraft doesn't complain about it at all.
+        // 
+        // Legal mumbo jumbo:
+        // We don't want to get sued by Mojang or Microsoft for this, if this gets into production.
+        // As launching without a token is piracy.
+        // TODO: Use an empty token in debug only.
+        // TODO: Prompt the user to login and properly check game ownership using Mojang API in production.
         var authInfo = new AuthInfo("Reimnop", "2d4faffa-8e09-4627-9fdd-a0eddc2fc981", "", "", UserType.Microsoft);
         
         var context = new LaunchContext(versionInfo, authInfo, preferences);
