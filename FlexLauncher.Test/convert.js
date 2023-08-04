@@ -25,7 +25,7 @@ function convert(filePath) {
             url: json.assetIndex.url
         } : undefined,
         main_jar: json.downloads?.client?.url ? {
-            path: "client.jar",
+            path: `${fileName}.jar`,
             url: json.downloads.client.url
         } : undefined,
         libraries: json.libraries ? convertLibraries(json.libraries) : undefined,

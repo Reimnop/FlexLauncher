@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using FlexLauncher.Data;
+using FlexLauncher.Util;
 
 namespace FlexLauncher.Core;
 
@@ -12,6 +13,7 @@ public class LaunchContext
 
     public VersionInfo Version { get; }
     public Preferences Preferences { get; }
+    public PathProvider Paths => new(Preferences.WorkingDirectory);
 
     public LaunchContext(VersionInfo version, AuthInfo authInfo, Preferences preferences)
     {
@@ -43,11 +45,11 @@ public class LaunchContext
         });
         variables.Add("client_id", preferences.ClientId);
         variables.Add("version_id", version.Name);
-        variables.Add("natives_directory", "natives");
+        variables.Add("natives_directory", Paths.NativesPathRelative);
         variables.Add("launcher_name", preferences.LauncherName);
         variables.Add("launcher_version", preferences.LauncherVersion);
         variables.Add("auth_xuid", authInfo.Xuid);
-        variables.Add("library_directory", "libraries");
+        variables.Add("library_directory", Paths.LibrariesPathRelative);
         variables.Add("libraries", GetLibraries(version));
         
         // Custom resolution
@@ -80,11 +82,11 @@ public class LaunchContext
             if (download == null)
                 continue;
 
-            stringBuilder.Append(Path.Combine("libraries", download.Path));
+            stringBuilder.Append(Path.Combine(Paths.LibrariesPathRelative, download.Path));
             stringBuilder.Append(separator);
         }
 
-        stringBuilder.Append(version.MainJar.Path);
+        stringBuilder.Append(Path.Combine(Paths.VersionsPathRelative, version.MainJar.Path));
         stringBuilder.Append(separator);
         
         return stringBuilder.ToString();

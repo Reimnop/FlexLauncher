@@ -20,7 +20,7 @@ public class FileDownloadInfo
 /// </summary>
 public class FileDownloader
 {
-    private readonly ConcurrentQueue<FileDownloadInfo> queue = new ConcurrentQueue<FileDownloadInfo>();
+    private readonly ConcurrentQueue<FileDownloadInfo> queue = new();
 
     public FileDownloader(IEnumerable<FileDownloadInfo> files)
     {
@@ -30,7 +30,7 @@ public class FileDownloader
         }
     }
     
-    public async Task DownloadAsync(int maxConcurrentDownloads = 5)
+    public async Task DownloadAsync(int maxConcurrentDownloads = 8)
     {
         var tasks = new List<Task>();
         for (int i = 0; i < maxConcurrentDownloads; i++)
@@ -43,6 +43,7 @@ public class FileDownloader
     private async Task DownloadQueuedFilesAsync()
     {
         using var client = new HttpClient();
+        
         while (queue.TryDequeue(out var file))
         {
             Debug.WriteLine($"Downloading '{file.Url}' to '{file.Path}'");
@@ -52,7 +53,7 @@ public class FileDownloader
             
             using var response = await client.GetAsync(file.Url);
             await using var contentStream = await response.Content.ReadAsStreamAsync();
-            await using var fileStream = new FileStream(file.Path, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+            await using var fileStream = new FileStream(file.Path, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
             await contentStream.CopyToAsync(fileStream);
         }
     }

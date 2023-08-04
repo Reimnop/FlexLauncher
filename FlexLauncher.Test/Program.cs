@@ -12,7 +12,7 @@ public class Program
         var workingPath = Path.Combine(basePath, "game");
         var gamePath = Path.Combine(basePath, "instance");
 
-        var versionInfo = VersionInfoParser.FromFile("22w31a-converted.json");
+        var versionInfo = VersionInfoParser.FromFile("23w31a.json");
         var preferences = new Preferences(
             "FlexLauncher", 
             "21", 
@@ -34,7 +34,8 @@ public class Program
     {
         var launcher = new Launcher(context);
         await launcher.InstallVersionAsync();
-        var gameInstance = await launcher.GetGameInstanceAsync();
+        
+        var gameInstance = launcher.GetGameInstance();
         var process = gameInstance.Process;
         process.StartInfo.UseShellExecute = true;
         process.Start();

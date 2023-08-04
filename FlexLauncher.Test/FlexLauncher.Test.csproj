@@ -11,10 +11,4 @@
       <ProjectReference Include="..\FlexLauncher\FlexLauncher.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="22w31a-converted.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
 </Project>

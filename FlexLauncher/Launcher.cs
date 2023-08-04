@@ -10,13 +10,13 @@ namespace FlexLauncher;
 public class Launcher
 {
     private readonly LaunchContext context;
-    
+
     public Launcher(LaunchContext context)
     {
         this.context = context;
     }
 
-    public async Task<GameInstance> GetGameInstanceAsync()
+    public GameInstance GetGameInstance()
     {
         // Launch game
         var process = new Process();
@@ -34,25 +34,18 @@ public class Launcher
 
     private IEnumerable<string> GetLaunchArguments()
     {
-        foreach (var argumentList in context.Version.JvmArguments)
-        {
-            foreach (var argument in argumentList.EnumerateArguments(context))
-            {
-                yield return argument;
-            }
-        }
-        
+        // Add JVM arguments
+        foreach (var argument in context.Version.JvmArguments.SelectMany(x => x.EnumerateArguments(context)))
+            yield return argument;
+
+        // Add main class
         yield return context.Version.MainClass;
-        
-        foreach (var argumentList in context.Version.GameArguments)
-        {
-            foreach (var argument in argumentList.EnumerateArguments(context))
-            {
-                yield return argument;
-            }
-        }
+
+        // Add game arguments
+        foreach (var argument in context.Version.GameArguments.SelectMany(x => x.EnumerateArguments(context)))
+            yield return argument;
     }
-    
+
     public async Task InstallVersionAsync()
     {
         var jarDownloadInfos = GetJarDownloadInfos();
@@ -72,8 +65,7 @@ public class Launcher
         var libraryDownloadInfos = context.Version.Libraries
             .Select(x => x.GetDownload(context))
             .OfType<DownloadInfo>() // Get rid of the libraries that don't have a download
-            .Select(x =>
-                new FileDownloadInfo(x.Url, Path.Combine(context.Preferences.WorkingDirectory, "libraries", x.Path)));
+            .Select(x => new FileDownloadInfo(x.Url, Path.Combine(context.Paths.LibrariesPath, x.Path)));
         
         foreach (var downloadInfo in libraryDownloadInfos)
             yield return downloadInfo;
@@ -81,15 +73,17 @@ public class Launcher
         // Get main jar
         yield return new FileDownloadInfo(
             context.Version.MainJar.Url,
-            Path.Combine(context.Preferences.WorkingDirectory, context.Version.MainJar.Path));
+            Path.Combine(context.Paths.VersionsPath, context.Version.MainJar.Path));
     }
 
     private async Task<IEnumerable<FileDownloadInfo>> GetAssetDownloadInfosAsync()
     {
         // Download asset index
         var assetIndexStr = await WebHelper.Fetch(context.Version.AssetIndex.Url);
-        var indexesDir = Path.Combine(context.Preferences.WorkingDirectory, "assets", "indexes");
+        var indexesDir = context.Paths.AssetIndexesPath;
         Directory.CreateDirectory(indexesDir);
+        
+        // Write asset index to file
         await File.WriteAllTextAsync(Path.Combine(indexesDir, $"{context.Version.AssetIndex.Name}.json"), assetIndexStr);
         
         // Parse asset index
@@ -111,7 +105,7 @@ public class Launcher
         foreach (var asset in assets)
         {
             var assetGroup = asset.Hash.Substring(0, 2);
-            var assetPath = Path.Combine(context.Preferences.WorkingDirectory, "assets", "objects", assetGroup, asset.Hash);
+            var assetPath = Path.Combine(context.Paths.AssetObjectsPath, assetGroup, asset.Hash);
             var url = $"https://resources.download.minecraft.net/{assetGroup}/{asset.Hash}";
             yield return new FileDownloadInfo(url, assetPath);
         }
