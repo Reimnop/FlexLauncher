@@ -1,6 +1,7 @@
 ﻿using FlexLauncher.Core;
 using FlexLauncher.Data;
 using FlexLauncher.Parsing;
+using FlexLauncher.Util;
 
 namespace FlexLauncher.Test;
 
@@ -32,6 +33,12 @@ public class Program
         // As launching without a token is piracy.
         // TODO: Use an empty token in debug only.
         // TODO: Prompt the user to login and properly check game ownership using Mojang API in production.
+        //
+        // DO NOT WORK ON THIS CODE IF YOU DO NOT HAVE A MINECRAFT ACCOUNT.
+        // DO NOT USE THIS PRE-ALPHA CODE FOR THE PURPOSE OF PLAYING MINECRAFT FOR FREE. 
+        // IF YOU DO NOT OWN A MINECRAFT ACCOUNT, PLEASE CLOSE YOUR CODE EDITOR AND CEASE ALL INTERACTIONS WITH THIS CODEBASE IMMEDIATELY.
+        // WE SHALL NOT BE HELD LIABLE FOR ANY DAMAGES OR MISUSE CAUSED BY THIS TEMPORARY WORKAROUND.
+        // YOU HAVE BEEN WARNED.
         var authInfo = new AuthInfo("Reimnop", "2d4faffa-8e09-4627-9fdd-a0eddc2fc981", "", "", UserType.Microsoft);
         
         var context = new LaunchContext(versionInfo, authInfo, preferences);
@@ -42,7 +49,12 @@ public class Program
     private static async Task LaunchMinecraft(LaunchContext context)
     {
         var launcher = new Launcher(context);
-        await launcher.InstallVersionAsync();
+
+        var progress = new Progress<DownloadProgress>(x =>
+        {
+            Console.WriteLine($"Downloaded '{Path.GetFileName(x.LastDownloadedFile)}', {x.DownloadedFiles}/{x.TotalFiles}");
+        });
+        await launcher.InstallVersionAsync(progress);
         
         var gameInstance = launcher.GetGameInstance();
         var process = gameInstance.Process;

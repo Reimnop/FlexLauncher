@@ -46,7 +46,7 @@ public class Launcher
             yield return argument;
     }
 
-    public async Task InstallVersionAsync()
+    public async Task InstallVersionAsync(IProgress<DownloadProgress>? progress = null)
     {
         var jarDownloadInfos = GetJarDownloadInfos();
         var assetDownloadInfos = await GetAssetDownloadInfosAsync();
@@ -56,7 +56,7 @@ public class Launcher
 
         // Download files
         var downloader = new FileDownloader(files);
-        await downloader.DownloadAsync();
+        await downloader.DownloadAsync(progress);
     }
 
     private IEnumerable<FileDownloadInfo> GetJarDownloadInfos()
@@ -78,16 +78,10 @@ public class Launcher
 
     private async Task<IEnumerable<FileDownloadInfo>> GetAssetDownloadInfosAsync()
     {
-        // Download asset index
-        var assetIndexStr = await WebHelper.Fetch(context.Version.AssetIndex.Url);
-        var indexesDir = context.Paths.AssetIndexesPath;
-        Directory.CreateDirectory(indexesDir);
+        // Get asset index
+        var assetIndex = await GetAssetIndex();
         
-        // Write asset index to file
-        await File.WriteAllTextAsync(Path.Combine(indexesDir, $"{context.Version.AssetIndex.Name}.json"), assetIndexStr);
-        
-        // Parse asset index
-        var assetIndex = JObject.Parse(assetIndexStr);
+        // Get assets list from asset index
         var assets = assetIndex["objects"]!
             .Children()
             .Select(x => x.Value<JProperty>())
@@ -98,6 +92,31 @@ public class Launcher
         
         // Get asset download infos
         return EnumerateAssetDownloadInfos(assets);
+    }
+
+    private async Task<JObject> GetAssetIndex()
+    {
+        var indexesDir = context.Paths.AssetIndexesPath;
+        var indexesPath = Path.Combine(indexesDir, $"{context.Version.AssetIndex.Name}.json");
+        
+        // If it already exists, return it
+        if (File.Exists(indexesPath))
+        {
+            var str = await File.ReadAllTextAsync(indexesPath);
+            return JObject.Parse(str);
+        }
+        else
+        {
+            // Download asset index
+            var str = await WebHelper.Fetch(context.Version.AssetIndex.Url);
+            Directory.CreateDirectory(indexesDir);
+        
+            // Write asset index to file
+            await File.WriteAllTextAsync(indexesPath, str);
+            
+            // Return asset index
+            return JObject.Parse(str);
+        }
     }
 
     private IEnumerable<FileDownloadInfo> EnumerateAssetDownloadInfos(IEnumerable<Asset> assets)

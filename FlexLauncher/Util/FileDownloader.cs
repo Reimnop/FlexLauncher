@@ -3,6 +3,20 @@ using System.Diagnostics;
 
 namespace FlexLauncher.Util;
 
+public class DownloadProgress
+{
+    public int TotalFiles { get; }
+    public int DownloadedFiles { get; }
+    public string LastDownloadedFile { get; }
+    
+    public DownloadProgress(int totalFiles, int downloadedFiles, string lastDownloadedFile)
+    {
+        TotalFiles = totalFiles;
+        DownloadedFiles = downloadedFiles;
+        LastDownloadedFile = lastDownloadedFile;
+    }
+}
+
 public class FileDownloadInfo
 {
     public string Url { get; }
@@ -21,33 +35,42 @@ public class FileDownloadInfo
 public class FileDownloader
 {
     private readonly ConcurrentQueue<FileDownloadInfo> queue = new();
+    private readonly int totalFiles;
 
     public FileDownloader(IEnumerable<FileDownloadInfo> files)
     {
         foreach (var file in files)
-        {
             queue.Enqueue(file);
-        }
+        
+        totalFiles = queue.Count;
     }
     
-    public async Task DownloadAsync(int maxConcurrentDownloads = 8)
+    public async Task DownloadAsync(IProgress<DownloadProgress>? progress = null, int maxConcurrentDownloads = 8)
     {
         var tasks = new List<Task>();
-        for (int i = 0; i < maxConcurrentDownloads; i++)
+        var downloadedFiles = 0;
+        for (var i = 0; i < maxConcurrentDownloads; i++)
         {
-            tasks.Add(DownloadQueuedFilesAsync());
+            IProgress<string>? taskProgress = null;
+            if (progress != null)
+            {
+                taskProgress = new Progress<string>(x =>
+                {
+                    downloadedFiles++;
+                    progress.Report(new DownloadProgress(totalFiles, downloadedFiles, x));
+                });
+            }
+            tasks.Add(DownloadQueuedFilesAsync(taskProgress));
         }
         await Task.WhenAll(tasks);
     }
 
-    private async Task DownloadQueuedFilesAsync()
+    private async Task DownloadQueuedFilesAsync(IProgress<string>? progress)
     {
         using var client = new HttpClient();
         
         while (queue.TryDequeue(out var file))
         {
-            Debug.WriteLine($"Downloading '{file.Url}' to '{file.Path}'");
-            
             var directory = Path.GetDirectoryName(file.Path)!;
             Directory.CreateDirectory(directory);
             
@@ -55,6 +78,8 @@ public class FileDownloader
             await using var contentStream = await response.Content.ReadAsStreamAsync();
             await using var fileStream = new FileStream(file.Path, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
             await contentStream.CopyToAsync(fileStream);
+            
+            progress?.Report(file.Path);
         }
     }
 }
