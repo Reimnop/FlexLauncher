@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexLauncher", "FlexLaunche
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexLauncher.Test", "FlexLauncher.Test\FlexLauncher.Test.csproj", "{2B681D62-DAE3-427D-8648-43E75DA5213B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexLauncherUI", "FlexLauncherUI\FlexLauncherUI.csproj", "{613A0C73-FB23-436C-B524-E27DCFF4FD1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2B681D62-DAE3-427D-8648-43E75DA5213B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B681D62-DAE3-427D-8648-43E75DA5213B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B681D62-DAE3-427D-8648-43E75DA5213B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613A0C73-FB23-436C-B524-E27DCFF4FD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613A0C73-FB23-436C-B524-E27DCFF4FD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613A0C73-FB23-436C-B524-E27DCFF4FD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613A0C73-FB23-436C-B524-E27DCFF4FD1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
