@@ -16,15 +16,7 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <ExperimentalAcrylicBorder 
-        Padding="16,48,16,16">
-        <ExperimentalAcrylicBorder.Material>
-            <ExperimentalAcrylicMaterial
-                BackgroundSource="Digger"
-                TintColor="Black"
-                TintOpacity="1"
-                MaterialOpacity="0.25" />
-        </ExperimentalAcrylicBorder.Material>
+    <Border Padding="16,48,16,16">
         
         <Grid RowDefinitions="42,*" ColumnDefinitions="*,Auto">
             <TextBox 
@@ -59,6 +51,6 @@
                 </ScrollViewer>
             </Panel>
         </Grid>
-    </ExperimentalAcrylicBorder>
+    </Border>
 </Window>
  
