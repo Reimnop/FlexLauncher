@@ -3,6 +3,7 @@
         xmlns:vm="using:FlexLauncherUI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="https://github.com/projektanker/icons.avalonia"
         TransparencyLevelHint="Mica, AcrylicBlur"
         Background="Transparent"
         ExtendClientAreaToDecorationsHint="True"
@@ -25,14 +26,37 @@
                 MaterialOpacity="0.25" />
         </ExperimentalAcrylicBorder.Material>
         
-        <Grid RowDefinitions="42,*" ColumnDefinitions="*,80">
-            <TextBox Grid.Row="0" Watermark="Search profiles" VerticalContentAlignment="Center" />
+        <Grid RowDefinitions="42,*" ColumnDefinitions="*,Auto">
+            <TextBox 
+                Grid.Row="0" 
+                Watermark="Search profiles" 
+                VerticalContentAlignment="Center" />
+            
+            <Panel 
+                Grid.Column="1" 
+                Grid.Row="0" 
+                Margin="16,0,0,0">
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <Button Width="42" Height="42" CornerRadius="8">
+                        <i:Icon Value="mdi-cog" Foreground="White" />
+                    </Button>
+                </StackPanel>
+            </Panel>
             
             <Panel 
                 Grid.Row="1" 
                 Grid.Column="0" 
                 Grid.ColumnSpan="2" 
                 Margin="0,16,0,0">
+                <ScrollViewer>
+                    <StackPanel 
+                        Orientation="Vertical" 
+                        Spacing="16"
+                        VerticalAlignment="Top">
+                        <Border Background="#2F000000" CornerRadius="8" Height="96" />
+                        <Border Background="#2F000000" CornerRadius="8" Height="96" />
+                    </StackPanel>
+                </ScrollViewer>
             </Panel>
         </Grid>
     </ExperimentalAcrylicBorder>
