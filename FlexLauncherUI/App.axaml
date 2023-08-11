@@ -5,7 +5,19 @@
     <Application.DataTemplates>
         <local:ViewLocator />
     </Application.DataTemplates>
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Global style variables --> 
+                <ResourceInclude Source="Global.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    
     <Application.Styles>
         <FluentTheme />
+        <!-- Override Fluent Theme -->
+        <StyleInclude Source="Styles/TextBox.axaml" />
     </Application.Styles>
 </Application>

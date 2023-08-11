@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <x:Double x:Key="ControlContentThemeFontSize">18</x:Double>
+    <Brush x:Key="TextControlBackground">#2F000000</Brush>
+    <Brush x:Key="TextControlBackgroundPointerOver">#6F000000</Brush>
+    <Brush x:Key="TextControlBackgroundFocused">#7F000000</Brush>
+</ResourceDictionary>
