@@ -8,6 +8,5 @@
 
     <Style Selector="TextBox">
         <Setter Property="BorderThickness" Value="0,0,0,1" />
-        <Setter Property="CornerRadius" Value="8" />
     </Style>
 </Styles>

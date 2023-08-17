@@ -1,0 +1,96 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FlexLauncherUI.Controls"
+        xmlns:i="https://github.com/projektanker/icons.avalonia">
+    <Design.PreviewWith>
+        <controls:ProfileDisplay />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|ProfileDisplay">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border 
+                    Name="PART_Background"
+                    Background="{DynamicResource TextControlBackground}"
+                    CornerRadius="{DynamicResource ControlCornerRadius}" 
+                    Width="{TemplateBinding Width}"
+                    MinWidth="{TemplateBinding MinWidth}"
+                    MaxWidth="{TemplateBinding MaxWidth}"
+                    Height="{TemplateBinding Height}"
+                    MinHeight="{TemplateBinding MinHeight}"
+                    MaxHeight="{TemplateBinding MaxHeight}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    Padding="16">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Border 
+                            Grid.Column="0"
+                            CornerRadius="{DynamicResource ControlCornerRadius}"
+                            ClipToBounds="True">
+                            <Image 
+                                Stretch="Uniform" 
+                                Source="{Binding ProfileIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Border>
+                        
+                        <Grid
+                            Grid.Column="1"
+                            Margin="16,0,0,0"
+                            RowDefinitions="Auto,*,Auto">
+                            <TextBlock 
+                                Grid.Row="0" 
+                                Classes="HeadingSmall"
+                                Text="{Binding ProfileName, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <TextBlock
+                                Grid.Row="1" 
+                                TextTrimming="CharacterEllipsis"
+                                Text="{Binding ProfileDescription, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            
+                            <Grid
+                                Grid.Row="2" 
+                                ColumnDefinitions="Auto,*">
+                                <Grid.Resources>
+                                    <Brush x:Key="TextColor">#afafaf</Brush>
+                                </Grid.Resources>
+                                
+                                <i:Icon 
+                                    Grid.Column="0" 
+                                    Value="mdi-clock-outline"
+                                    Foreground="{DynamicResource TextColor}" />
+                                <TextBlock 
+                                    Grid.Column="1" 
+                                    Margin="8,0,0,0"
+                                    Foreground="{DynamicResource TextColor}"
+                                    Text="{Binding ProfilePlayTime, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Grid>
+                            
+                            <StackPanel 
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Spacing="8"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom">
+                                <Button 
+                                    Width="36" 
+                                    Height="36" 
+                                    i:Attached.Icon="mdi-menu" />
+                                <Button 
+                                    Width="36" 
+                                    Height="36" 
+                                    i:Attached.Icon="mdi-play">
+                                    <Button.Styles>
+                                        <StyleInclude Source="../Styles/GreenButton.axaml" />
+                                    </Button.Styles>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^:pointerover /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}"/>
+        </Style>
+    </Style>
+</Styles>

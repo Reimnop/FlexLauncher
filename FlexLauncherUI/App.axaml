@@ -17,7 +17,11 @@
     
     <Application.Styles>
         <FluentTheme />
-        <!-- Override Fluent Theme -->
+        
         <StyleInclude Source="Styles/TextBox.axaml" />
+        <StyleInclude Source="Styles/Headings.axaml" />
+        
+        <!-- Custom controls -->
+        <StyleInclude Source="Controls/ProfileDisplay.axaml" />
     </Application.Styles>
 </Application>

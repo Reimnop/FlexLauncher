@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="https://github.com/projektanker/icons.avalonia"
+        xmlns:controls="clr-namespace:FlexLauncherUI.Controls"
+        xmlns:models="clr-namespace:FlexLauncherUI.Models"
         TransparencyLevelHint="Mica, AcrylicBlur"
         Background="Transparent"
         ExtendClientAreaToDecorationsHint="True"
@@ -29,27 +31,145 @@
                 Grid.Row="0" 
                 Margin="16,0,0,0">
                 <StackPanel Orientation="Horizontal" Spacing="16">
-                    <Button Width="42" Height="42" CornerRadius="8">
-                        <i:Icon Value="mdi-cog" Foreground="White" />
-                    </Button>
+                    <Button 
+                        Width="42" 
+                        Height="42" 
+                        i:Attached.Icon="mdi-cog" />
                 </StackPanel>
             </Panel>
             
-            <Panel 
+            <ScrollViewer
                 Grid.Row="1" 
                 Grid.Column="0" 
                 Grid.ColumnSpan="2" 
                 Margin="0,16,0,0">
-                <ScrollViewer>
-                    <StackPanel 
-                        Orientation="Vertical" 
-                        Spacing="16"
-                        VerticalAlignment="Top">
-                        <Border Background="#2F000000" CornerRadius="8" Height="96" />
-                        <Border Background="#2F000000" CornerRadius="8" Height="96" />
-                    </StackPanel>
-                </ScrollViewer>
-            </Panel>
+                <ItemsControl
+                    Margin="0,-8">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:ProfileDisplay 
+                                Margin="0,8"
+                                Height="128" 
+                                Profile="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                        
+                    <ItemsControl.Items>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                        <models:Profile>
+                            <x:Arguments>
+                                <x:String>Worst SMP</x:String>
+                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                <x:TimeSpan>10:00:00</x:TimeSpan>
+                            </x:Arguments>
+                        </models:Profile>
+                    </ItemsControl.Items>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </Border>
 </Window>
