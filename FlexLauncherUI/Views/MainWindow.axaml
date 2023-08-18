@@ -6,6 +6,7 @@
         xmlns:i="https://github.com/projektanker/icons.avalonia"
         xmlns:controls="clr-namespace:FlexLauncherUI.Controls"
         xmlns:models="clr-namespace:FlexLauncherUI.Models"
+        xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
         TransparencyLevelHint="Mica, AcrylicBlur"
         Background="Transparent"
         ExtendClientAreaToDecorationsHint="True"
@@ -43,132 +44,136 @@
                 Grid.Column="0" 
                 Grid.ColumnSpan="2" 
                 Margin="0,16,0,0">
-                <ItemsControl
-                    Margin="0,-8">
-                    <ItemsControl.ItemTemplate>
+                <ItemsRepeater>
+                    <ItemsRepeater.Layout>
+                        <StackLayout Spacing="16" />
+                    </ItemsRepeater.Layout>
+                    
+                    <ItemsRepeater.ItemTemplate>
                         <DataTemplate>
                             <controls:ProfileDisplay 
-                                Margin="0,8"
                                 Height="128" 
                                 Profile="{Binding}" />
                         </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+                    </ItemsRepeater.ItemTemplate>
                         
-                    <ItemsControl.Items>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                        <models:Profile>
-                            <x:Arguments>
-                                <x:String>Worst SMP</x:String>
-                                <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
-                                <x:TimeSpan>10:00:00</x:TimeSpan>
-                            </x:Arguments>
-                        </models:Profile>
-                    </ItemsControl.Items>
-                </ItemsControl>
+                    <ItemsRepeater.ItemsSource>
+                        <generic:List x:TypeArguments="models:Profile">
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                            <models:Profile>
+                                <x:Arguments>
+                                    <x:String>Worst SMP</x:String>
+                                    <x:String>Traverse diverse landscapes, unearth hidden treasures, and encounter formidable challenges as you forge your path through a dynamically altered world. </x:String>
+                                    <x:TimeSpan>10:00:00</x:TimeSpan>
+                                </x:Arguments>
+                            </models:Profile>
+                        </generic:List>
+                    </ItemsRepeater.ItemsSource>
+                </ItemsRepeater>
             </ScrollViewer>
         </Grid>
     </Border>

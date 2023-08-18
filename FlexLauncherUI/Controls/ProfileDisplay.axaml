@@ -49,7 +49,16 @@
                                 Grid.Row="2" 
                                 ColumnDefinitions="Auto,*">
                                 <Grid.Resources>
-                                    <Brush x:Key="TextColor">#afafaf</Brush>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <Brush x:Key="TextColor">#bfbfbf</Brush>
+                                            </ResourceDictionary>
+                                            <ResourceDictionary x:Key="Light">
+                                                <Brush x:Key="TextColor">#6f6f6f</Brush>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
                                 </Grid.Resources>
                                 
                                 <i:Icon 

@@ -8,9 +8,20 @@
     
     <Style Selector="Button">
         <Style.Resources>
-            <Brush x:Key="ButtonBackground">#48d870</Brush>
-            <Brush x:Key="ButtonBackgroundPointerOver">#37a455</Brush>
-            <Brush x:Key="ButtonBackgroundPressed">#54fe83</Brush>
+            <ResourceDictionary>
+                <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key="Dark">
+                        <Brush x:Key="ButtonBackground">#48d870</Brush>
+                        <Brush x:Key="ButtonBackgroundPointerOver">#37a455</Brush>
+                        <Brush x:Key="ButtonBackgroundPressed">#54fe83</Brush>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="Light">
+                        <Brush x:Key="ButtonBackground">#48d870</Brush>
+                        <Brush x:Key="ButtonBackgroundPointerOver">#54fe83</Brush>
+                        <Brush x:Key="ButtonBackgroundPressed">#37a455</Brush>
+                    </ResourceDictionary>
+                </ResourceDictionary.ThemeDictionaries>
+            </ResourceDictionary>
         </Style.Resources>
     </Style>
 </Styles>
