@@ -13,15 +13,15 @@ namespace FlexLauncherUI.Controls;
 
 public class ProfileDisplay : TemplatedControl
 {
-    public static readonly DirectProperty<ProfileDisplay, Profile?> ProfileProperty =
-        AvaloniaProperty.RegisterDirect<ProfileDisplay, Profile?>(
+    public static readonly DirectProperty<ProfileDisplay, ProfileModel?> ProfileProperty =
+        AvaloniaProperty.RegisterDirect<ProfileDisplay, ProfileModel?>(
             nameof(Profile),
             o => o.Profile,
             (o, v) => o.Profile = v);
 
-    private Profile? profile;
+    private ProfileModel? profile;
     
-    public Profile? Profile
+    public ProfileModel? Profile
     {
         get => profile;
         set => SetAndRaise(ProfileProperty, ref profile, value);
@@ -44,7 +44,7 @@ public class ProfileDisplay : TemplatedControl
     
     private string ProfileName => Profile?.Name ?? "null";
     
-    private string ProfileDescription => Profile?.Description ?? "null";
+    private string ProfileLastUpdated => Profile != null ? $"Last updated {Profile.LastUpdated:dd/MM/yyyy hh:mm tt}" : "null";
     
-    private string ProfilePlayTime => Profile != null ? $"{Profile.PlayTime.TotalHours} hours" : "0 hours";
+    private string ProfilePlayTime => Profile != null ? $"{Math.Ceiling(Profile.PlayTime.TotalHours)} hours" : "0 hours";
 }

@@ -42,8 +42,7 @@
                                 Text="{Binding ProfileName, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <TextBlock
                                 Grid.Row="1" 
-                                TextTrimming="CharacterEllipsis"
-                                Text="{Binding ProfileDescription, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                Text="{Binding ProfileLastUpdated, RelativeSource={RelativeSource TemplatedParent}}"/>
                             
                             <Grid
                                 Grid.Row="2" 
@@ -83,6 +82,10 @@
                                     Width="36" 
                                     Height="36" 
                                     i:Attached.Icon="mdi-menu" />
+                                <Button 
+                                    Width="36" 
+                                    Height="36" 
+                                    i:Attached.Icon="mdi-refresh" />
                                 <Button 
                                     Width="36" 
                                     Height="36" 
