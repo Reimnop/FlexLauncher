@@ -1,51 +1,31 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Windows.Input;
-using FlexLauncherUI.Data;
-using FlexLauncherUI.Models;
-using FlexLauncherUI.Services;
 using ReactiveUI;
 
 namespace FlexLauncherUI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public ICommand OnRefreshButtonClickedCommand { get; }
-
-    public IEnumerable<ProfileModel> ProfileModels
-    {
-        get => profilesModels;
-        private set => this.RaiseAndSetIfChanged(ref profilesModels, value);
-    }
-
-    private IEnumerable<ProfileModel> profilesModels = null!;
-
-    private readonly IDatabaseService databaseService;
+    public ICommand NavigateToSettingsCommand 
+        => ReactiveCommand.Create(() => CurrentViewModel = new SettingsViewModel());
     
-    public MainWindowViewModel(IDatabaseService databaseService)
+    public ICommand NavigateToMainCommand 
+        => ReactiveCommand.Create(() => CurrentViewModel = new MainViewModel(serviceProvider));
+    
+    public ViewModelBase CurrentViewModel
     {
-        this.databaseService = databaseService;
-        ProfileModels = databaseService
-            .FetchProfilesAsync()
-            .Select(CreateProfileModel)
-            .ToEnumerable();
-        OnRefreshButtonClickedCommand = ReactiveCommand.Create(OnRefreshButtonClicked);
+        get => viewModel;
+        private set => this.RaiseAndSetIfChanged(ref viewModel, value);
     }
 
-    private void OnRefreshButtonClicked()
-    {
-        ProfileModels = databaseService
-            .FetchProfilesAsync()
-            .Select(CreateProfileModel)
-            .ToEnumerable();
-    }
+    private ViewModelBase viewModel = null!;
+    
+    private readonly IServiceProvider serviceProvider;
 
-    private static ProfileModel CreateProfileModel(Profile profile)
-        => new()
-        {
-            Name = profile.Name,
-            LastUpdated = profile.LastUpdated,
-            DateCreated = profile.DateCreated,
-            PlayTime = profile.PlayTime
-        };
+    public MainWindowViewModel(IServiceProvider serviceProvider)
+    {
+        this.serviceProvider = serviceProvider;
+        
+        CurrentViewModel = new MainViewModel(this.serviceProvider);
+    }
 }

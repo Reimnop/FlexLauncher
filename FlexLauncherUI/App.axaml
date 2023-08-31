@@ -23,5 +23,6 @@
         
         <!-- Custom controls -->
         <StyleInclude Source="Controls/ProfileDisplay.axaml" />
+        <StyleInclude Source="Controls/AccountDisplay.axaml" />
     </Application.Styles>
 </Application>

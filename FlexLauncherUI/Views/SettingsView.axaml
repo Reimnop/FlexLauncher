@@ -1,0 +1,15 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:FlexLauncherUI.ViewModels;assembly=FlexLauncherUI"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FlexLauncherUI.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+    <Button 
+        Width="42" 
+        Height="42" 
+        Command="{Binding $parent[Window].DataContext.NavigateToMainCommand}"
+        i:Attached.Icon="mdi-home" />
+</UserControl>

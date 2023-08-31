@@ -4,11 +4,11 @@ namespace FlexLauncherUI.Utils;
 
 public static class SafetyUtil
 {
-    public static T EnsureNotNull<T>(this T? obj, string name) where T : class
+    public static T EnsureNotNull<T>(this T? value) where T : class
     {
-        if (obj is null)
-            throw new ArgumentNullException(name);
+        if (value is null)
+            throw new ArgumentNullException(nameof(value));
 
-        return obj;
+        return value;
     }
 }

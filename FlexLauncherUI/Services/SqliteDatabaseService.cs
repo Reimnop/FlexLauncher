@@ -25,8 +25,8 @@ public class SqliteDatabaseService : IDatabaseService
         await using var command = connection.CreateCommand();
         command.CommandText = "SELECT * FROM profiles";
 
+        // Read the profiles from the database
         await using var reader = await command.ExecuteReaderAsync();
-
         while (await reader.ReadAsync())
         {
             var id = reader.GetString("id");
@@ -44,6 +44,29 @@ public class SqliteDatabaseService : IDatabaseService
 
             // Yield the profile
             yield return new Profile(id, name, lastUpdated, dateCreated, playTime);
+        }
+    }
+
+    public async IAsyncEnumerable<Account> FetchAccountsAsync()
+    {
+        await using var connection = await OpenConnectionAsync();
+        
+        // Query the database for all accounts
+        await using var command = connection.CreateCommand();
+        command.CommandText = "SELECT * FROM accounts";
+        
+        // Read the accounts from the database
+        await using var reader = await command.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            var id = reader.GetString("id");
+            var uuid = reader.GetString("uuid");
+            var username = reader.GetString("username");
+            var token = reader.GetString("token");
+            var refreshToken = reader.GetString("refresh_token");
+            
+            // Yield the account
+            yield return new Account(id, uuid, username, token, refreshToken);
         }
     }
 

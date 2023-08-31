@@ -68,7 +68,7 @@
                                     Grid.Column="1" 
                                     Margin="8,0,0,0"
                                     Foreground="{DynamicResource TextColor}"
-                                    Text="{Binding ProfilePlayTime, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    Text="{Binding ProfileTime, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Grid>
                             
                             <StackPanel 
@@ -90,6 +90,7 @@
                                     Width="36" 
                                     Height="36" 
                                     i:Attached.Icon="mdi-play">
+                                    <!-- TODO: Switch to a class instead when Avalonia supports it -->
                                     <Button.Styles>
                                         <StyleInclude Source="../Styles/GreenButton.axaml" />
                                     </Button.Styles>

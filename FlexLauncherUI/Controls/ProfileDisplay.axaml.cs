@@ -19,13 +19,13 @@ public class ProfileDisplay : TemplatedControl
             o => o.Profile,
             (o, v) => o.Profile = v);
 
-    private ProfileModel? profile;
-    
     public ProfileModel? Profile
     {
         get => profile;
         set => SetAndRaise(ProfileProperty, ref profile, value);
     }
+    
+    private ProfileModel? profile;
     
     private IImage ProfileIcon
     {
@@ -35,7 +35,7 @@ public class ProfileDisplay : TemplatedControl
             // TODO: ^
             
             // Return a default icon if above fails
-            var uri = PathUtil.GetUri("Assets/Images/DefaultProfileIcon.png");
+            var uri = PathUtil.GetUri("Assets/Images/Placeholder.png");
             using var stream = AssetLoader.Open(uri);
 
             return new Bitmap(stream);
@@ -46,5 +46,5 @@ public class ProfileDisplay : TemplatedControl
     
     private string ProfileLastUpdated => Profile != null ? $"Last updated {Profile.LastUpdated:dd/MM/yyyy hh:mm tt}" : "null";
     
-    private string ProfilePlayTime => Profile != null ? $"{Math.Ceiling(Profile.PlayTime.TotalHours)} hours" : "0 hours";
+    private string ProfileTime => Profile != null ? $"Played {Math.Ceiling(Profile.PlayTime.TotalHours)} hours - since {Profile.DateCreated:dd/MM/yyyy}" : "null";
 }

@@ -4,6 +4,7 @@ using Avalonia.Markup.Xaml;
 using FlexLauncherUI.Services;
 using FlexLauncherUI.ViewModels;
 using FlexLauncherUI.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FlexLauncherUI
 {
@@ -16,13 +17,17 @@ namespace FlexLauncherUI
 
         public override void OnFrameworkInitializationCompleted()
         {
-            var profileDatabaseService = new SqliteDatabaseService("user_data.sqlite");
+            var services = new ServiceCollection()
+                // .AddSingleton<IDatabaseService>(_ => new SqliteDatabaseService("user_data.sqlite"));
+                .AddSingleton<IDatabaseService, DebugDatabaseService>();
             
+            var serviceProvider = services.BuildServiceProvider();
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(profileDatabaseService),
+                    DataContext = new MainWindowViewModel(serviceProvider),
                 };
             }
 
