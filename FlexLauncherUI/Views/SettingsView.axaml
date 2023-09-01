@@ -7,9 +7,22 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FlexLauncherUI.Views.SettingsView"
              x:DataType="vm:SettingsViewModel">
-    <Button 
-        Width="42" 
-        Height="42" 
-        Command="{Binding $parent[Window].DataContext.NavigateToMainCommand}"
-        i:Attached.Icon="mdi-home" />
+    <Grid RowDefinitions="42,*" ColumnDefinitions="Auto,*">
+        <Button 
+            Grid.Row="0"
+            Grid.Column="0"
+            Width="42" 
+            Height="42" 
+            Command="{Binding $parent[Window].DataContext.NavigateToMainCommand}"
+            Margin="0,0,16,0"
+            i:Attached.Icon="mdi-arrow-left" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Classes="HeadingLarge"
+            VerticalAlignment="Center"
+            Text="Settings" />
+    </Grid>
+    
+    
 </UserControl>
