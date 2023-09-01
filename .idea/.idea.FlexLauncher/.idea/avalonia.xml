@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="FlexLauncherUI/App.axaml" value="FlexLauncherUI/FlexLauncherUI.csproj" />
+        <entry key="FlexLauncherUI/Controls/AccountDisplay.axaml" value="FlexLauncherUI/FlexLauncherUI.csproj" />
+        <entry key="FlexLauncherUI/Global.axaml" value="FlexLauncherUI/FlexLauncherUI.csproj" />
+        <entry key="FlexLauncherUI/Views/MainView.axaml" value="FlexLauncherUI/FlexLauncherUI.csproj" />
+        <entry key="FlexLauncherUI/Views/MainWindow.axaml" value="FlexLauncherUI/FlexLauncherUI.csproj" />
+        <entry key="FlexLauncherUI/Views/SettingsView.axaml" value="FlexLauncherUI/FlexLauncherUI.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

@@ -29,13 +29,31 @@
             ColumnDefinitions="Auto,*"
             RowDefinitions="Auto,Auto"
             Margin="0,16,0,0">
+            
+            <!-- #region General -->
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
-                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
                 VerticalAlignment="Center"
                 Text="General"
                 Classes="HeadingMedium" />
+            
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Theme"
+                Classes="HeadingSmall"/>
+            <ComboBox
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Center">
+                <ComboBoxItem Content="System" />
+                <ComboBoxItem Content="Light" />
+                <ComboBoxItem Content="Dark" />
+            </ComboBox>
+            <!-- #endregion -->
         </Grid>
     </Grid>
     

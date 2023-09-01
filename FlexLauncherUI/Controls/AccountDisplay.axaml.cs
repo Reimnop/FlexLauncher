@@ -72,16 +72,17 @@ public class AccountDisplay : TemplatedControl
 
     private static async Task<IImage> LoadAccountIcon(AccountModel account)
     {
-        var image = await WebUtil.DownloadPlayerFaceAsync(account.Uuid);
+        // Get face image
+        var skin = await MinecraftAppearanceUtil.DownloadSkinFromUuidAsync(account.Uuid);
+        var face = await MinecraftAppearanceUtil.ExtractFaceFromSkinAsync(skin);
         
         // Copy the pixels to the buffer
-        var imageRgba32 = image.CloneAs<Rgba32>();
-        var buffer = new byte[image.Width * image.Height * 4];
-        imageRgba32.CopyPixelDataTo(buffer);
+        var buffer = new byte[face.Width * face.Height * 4];
+        face.CopyPixelDataTo(buffer);
         
         // Load the image as Avalonia Bitmap
         var bitmap = new WriteableBitmap(
-            new PixelSize(image.Width, image.Height), 
+            new PixelSize(face.Width, face.Height), 
             new Vector(96, 96),
             PixelFormat.Rgba8888,
             AlphaFormat.Unpremul);

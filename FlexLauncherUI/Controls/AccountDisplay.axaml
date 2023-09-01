@@ -13,7 +13,8 @@
                     ClipToBounds="True">
                     <Image 
                         Stretch="Uniform" 
-                        Source="{TemplateBinding AccountIcon}" />
+                        Source="{TemplateBinding AccountIcon}"
+                        RenderOptions.BitmapInterpolationMode="None" />
                 </Border>
             </ControlTemplate>
         </Setter>
