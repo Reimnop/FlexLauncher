@@ -22,6 +22,21 @@
             Classes="HeadingLarge"
             VerticalAlignment="Center"
             Text="Settings" />
+        <Grid
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            ColumnDefinitions="Auto,*"
+            RowDefinitions="Auto,Auto"
+            Margin="0,16,0,0">
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                VerticalAlignment="Center"
+                Text="General"
+                Classes="HeadingMedium" />
+        </Grid>
     </Grid>
     
     
