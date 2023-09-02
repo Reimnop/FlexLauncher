@@ -13,19 +13,14 @@ namespace FlexLauncherUI.Controls;
 
 public class ProfileDisplay : TemplatedControl
 {
-    public static readonly DirectProperty<ProfileDisplay, ProfileModel?> ProfileProperty =
-        AvaloniaProperty.RegisterDirect<ProfileDisplay, ProfileModel?>(
-            nameof(Profile),
-            o => o.Profile,
-            (o, v) => o.Profile = v);
+    public static readonly StyledProperty<ProfileModel?> ProfileProperty =
+        AvaloniaProperty.Register<ProfileDisplay, ProfileModel?>(nameof(Profile));
 
     public ProfileModel? Profile
     {
-        get => profile;
-        set => SetAndRaise(ProfileProperty, ref profile, value);
+        get => GetValue(ProfileProperty);
+        set => SetValue(ProfileProperty, value);
     }
-    
-    private ProfileModel? profile;
     
     private IImage ProfileIcon
     {

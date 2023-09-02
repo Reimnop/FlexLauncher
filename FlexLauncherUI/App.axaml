@@ -24,5 +24,6 @@
         <!-- Custom controls -->
         <StyleInclude Source="Controls/ProfileDisplay.axaml" />
         <StyleInclude Source="Controls/AccountDisplay.axaml" />
+        <StyleInclude Source="Controls/SettingsPanel.axaml" />
     </Application.Styles>
 </Application>

@@ -1,0 +1,38 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FlexLauncherUI.Controls">
+    <Design.PreviewWith>
+        <controls:SettingsPanel />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|SettingsPanel">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{DynamicResource TextControlBackground}"
+                    CornerRadius="{DynamicResource ControlCornerRadius}" 
+                    Width="{TemplateBinding Width}"
+                    MinWidth="{TemplateBinding MinWidth}"
+                    MaxWidth="{TemplateBinding MaxWidth}"
+                    Height="{TemplateBinding Height}"
+                    MinHeight="{TemplateBinding MinHeight}"
+                    MaxHeight="{TemplateBinding MaxHeight}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    Margin="{TemplateBinding Margin}"
+                    Padding="{TemplateBinding Padding}">
+                    <StackPanel Spacing="{TemplateBinding Spacing}">
+                        <TextBlock
+                            Text="{TemplateBinding Header}"
+                            Classes="HeadingMedium" />
+                        
+                        <Grid
+                            Name="PART_ContentGrid">
+                            
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

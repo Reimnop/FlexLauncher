@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -11,44 +10,34 @@ using Avalonia.Platform;
 using Avalonia.Threading;
 using FlexLauncherUI.Models;
 using FlexLauncherUI.Utils;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace FlexLauncherUI.Controls;
 
 public class AccountDisplay : TemplatedControl
 {
-    public static readonly DirectProperty<AccountDisplay, AccountModel?> AccountProperty =
-        AvaloniaProperty.RegisterDirect<AccountDisplay, AccountModel?>(
-            nameof(Account),
-            o => o.Account,
-            (o, v) => o.Account = v);
+    public static readonly StyledProperty<AccountModel?> AccountProperty =
+        AvaloniaProperty.Register<AccountDisplay, AccountModel?>(nameof(Account));
     
-    public static readonly DirectProperty<AccountDisplay, IImage?> AccountIconProperty =
-        AvaloniaProperty.RegisterDirect<AccountDisplay, IImage?>(
-            nameof(AccountIcon),
-            o => o.AccountIcon,
-            (o, v) => o.AccountIcon = v);
+    public static readonly StyledProperty<IImage?> AccountIconProperty =
+        AvaloniaProperty.Register<AccountDisplay, IImage?>(nameof(AccountIcon));
 
     public AccountModel? Account
     {
-        get => account;
-        set => SetAndRaise(AccountProperty, ref account, value);
+        get => GetValue(AccountProperty);
+        set => SetValue(AccountProperty, value);
     }
 
     public IImage? AccountIcon
     {
-        get => accountIcon;
-        set => SetAndRaise(AccountIconProperty, ref accountIcon, value);
+        get => GetValue(AccountIconProperty);
+        set => SetValue(AccountIconProperty, value);
     }
-
-    private AccountModel? account;
-    private IImage? accountIcon;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
         
-        accountIcon = LoadDefaultIcon();
+        AccountIcon = LoadDefaultIcon();
         
         if (Account != null)
             LoadAccountIcon(Account)

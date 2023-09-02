@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:FlexLauncherUI.ViewModels;assembly=FlexLauncherUI"
              xmlns:i="https://github.com/projektanker/icons.avalonia"
+             xmlns:controls="clr-namespace:FlexLauncherUI.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FlexLauncherUI.Views.SettingsView"
              x:DataType="vm:SettingsViewModel">
@@ -22,39 +23,16 @@
             Classes="HeadingLarge"
             VerticalAlignment="Center"
             Text="Settings" />
-        <Grid
+        <StackPanel
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            ColumnDefinitions="Auto,*"
-            RowDefinitions="Auto,Auto"
+            Spacing="16"
             Margin="0,16,0,0">
-            
-            <!-- #region General -->
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                VerticalAlignment="Center"
-                Text="General"
-                Classes="HeadingMedium" />
-            
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                VerticalAlignment="Center"
-                Text="Theme"
-                Classes="HeadingSmall"/>
-            <ComboBox
-                Grid.Row="1"
-                Grid.Column="1"
-                VerticalAlignment="Center">
-                <ComboBoxItem Content="System" />
-                <ComboBoxItem Content="Light" />
-                <ComboBoxItem Content="Dark" />
-            </ComboBox>
-            <!-- #endregion -->
-        </Grid>
+            <controls:SettingsPanel
+                Header="nerd"
+                Padding="16" />
+        </StackPanel>
     </Grid>
     
     
