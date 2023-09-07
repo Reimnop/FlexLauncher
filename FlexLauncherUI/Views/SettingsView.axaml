@@ -30,8 +30,18 @@
             Spacing="16"
             Margin="0,16,0,0">
             <controls:SettingsPanel
-                Header="nerd"
-                Padding="16" />
+                Header="General"
+                HeaderSpacing="16"
+                Spacing="8"
+                Padding="16">
+                <ComboBox 
+                    controls:SettingsPanel.Title="Theme"
+                    SelectedIndex="0">
+                    <ComboBoxItem>System</ComboBoxItem>
+                    <ComboBoxItem>Light</ComboBoxItem>
+                    <ComboBoxItem>Dark</ComboBoxItem>
+                </ComboBox>
+            </controls:SettingsPanel>
         </StackPanel>
     </Grid>
     

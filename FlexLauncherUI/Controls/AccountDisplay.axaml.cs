@@ -38,7 +38,7 @@ public class AccountDisplay : TemplatedControl
         base.OnInitialized();
         
         AccountIcon = LoadDefaultIcon();
-        
+
         if (Account != null)
             LoadAccountIcon(Account)
                 .ContinueWith(x =>

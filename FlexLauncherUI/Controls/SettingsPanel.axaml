@@ -21,15 +21,13 @@
                     VerticalAlignment="{TemplateBinding VerticalAlignment}"
                     Margin="{TemplateBinding Margin}"
                     Padding="{TemplateBinding Padding}">
-                    <StackPanel Spacing="{TemplateBinding Spacing}">
+                    <StackPanel Spacing="{TemplateBinding HeaderSpacing}">
                         <TextBlock
                             Text="{TemplateBinding Header}"
                             Classes="HeadingMedium" />
-                        
                         <Grid
-                            Name="PART_ContentGrid">
-                            
-                        </Grid>
+                            Name="PART_ContentGrid"
+                            ColumnDefinitions="*,Auto" />
                     </StackPanel>
                 </Border>
             </ControlTemplate>
